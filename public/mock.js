@@ -3,7 +3,7 @@ const trainingData = [
     id: 1,
     bookedArena: "Dressage Arena",
     bookedPerson: "Ally",
-    time: "17:00-18:00",
+    time: "13:00-14:00",
     date: "20.July.2023",
     singleRider: false,
     title: "Training",
