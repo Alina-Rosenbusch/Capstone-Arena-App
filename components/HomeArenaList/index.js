@@ -22,7 +22,7 @@ export default function BookedArenas() {
 const StyledArena = styled.div`
   background-color: #a4b9a0;
   border-radius: 10px;
-  padding: 10px;
+  padding: 11px;
   margin: 10px;
   height: 160px;
 
