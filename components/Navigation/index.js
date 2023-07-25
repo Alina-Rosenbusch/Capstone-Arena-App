@@ -26,7 +26,7 @@ export default function Navigation() {
       </Link>
       <Link
         className={router.pathname === "/profil" ? "active" : "navLink"}
-        href=""
+        href="#"
         alt="profil"
       >
         <AiOutlineUser />
