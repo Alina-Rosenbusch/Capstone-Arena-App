@@ -1,7 +1,7 @@
 import ListArenas from "../components/ArenaList";
-import Router from "next/router";
 import styled from "styled-components";
 import Heading from "../components/Heading";
+import Navigation from "../components/Navigation";
 
 export default function ArenaList() {
   return (
@@ -10,6 +10,7 @@ export default function ArenaList() {
       <GridWrapper>
         <ListArenas />
       </GridWrapper>
+      <Navigation />
     </>
   );
 }
@@ -20,4 +21,5 @@ const GridWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   gap: 1rem;
+  padding-bottom: 70px;
 `;
