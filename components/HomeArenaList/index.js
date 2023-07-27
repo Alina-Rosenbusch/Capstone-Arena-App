@@ -1,6 +1,7 @@
 import trainingData from "../../lib/mock.js";
 import styled from "styled-components";
 
+
 export default function BookedArenas() {
   return (
     <>
