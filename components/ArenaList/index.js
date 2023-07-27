@@ -1,19 +1,39 @@
-import { arenaList } from "../../lib/mock";
+// import { arenaList } from "../../lib/mock";
 import styled from "styled-components";
+import useSWR from "swr";
+import { useState } from "react";
 
-export default function ListArenas() {
+
+const ListArenas = () => {
+  const { data: arenas, error } = useSWR("/api/arenas");
+  const [isReady, setIsReady] = useState(false);
+
+  if (!arenas && !error) {
+    return <h2>Loading...</h2>;
+  }
+
+  if (error) {
+    return <h2>Error: {error.message}</h2>;
+  }
+
+  if (!isReady) {
+    setIsReady(true);
+  }
+
   return (
     <>
-      {arenaList.map((arena) => {
+      {arenas.map((arena) => {
         return (
-          <StyledArenaList key={arena.id} className="arenaListEntry">
+          <StyledArenaList key={arena._id} className="arenaListEntry">
             <p className="arena">{arena.arenaName}</p>
           </StyledArenaList>
         );
       })}
     </>
   );
-}
+};
+
+export default ListArenas;
 
 const StyledArenaList = styled.div`
   background-color: #a4b9a0;
