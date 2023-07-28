@@ -1,4 +1,3 @@
-// import { arenaList } from "../../lib/mock";
 import styled from "styled-components";
 import useSWR from "swr";
 import { useState } from "react";
