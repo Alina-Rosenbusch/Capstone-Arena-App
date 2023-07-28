@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { useState } from "react";
 
 const BookedArenas = () => {
-  const { data: bookings, error } = useSWR("/api/bookings");
+  const { data: bookings, error } = useSWR("/api/bookings/index");
   const [isReady, setIsReady] = useState(false);
 
   if (!bookings && !error) {
