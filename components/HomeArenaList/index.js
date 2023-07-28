@@ -1,23 +1,55 @@
-import trainingData from "../../lib/mock.js";
-import styled from "styled-components";
 
-export default function BookedArenas() {
+import styled from "styled-components";
+import useSWR from "swr";
+import { useState } from "react";
+
+const BookedArenas = () => {
+  const { data: bookings, error } = useSWR("/api/bookings");
+  const [isReady, setIsReady] = useState(false);
+
+  if (!bookings && !error) {
+    return <h2>Loading...</h2>;
+  }
+
+  if (error) {
+    return <h2>Error: {error.message}</h2>;
+  }
+
+  if (!isReady) {
+    setIsReady(true);
+  }
+
+  function formatDate(bookingDate) {
+    const dateObject = new Date(bookingDate);
+    //format to german date:
+    const germanDate = dateObject.toLocaleString("de-DE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+    return germanDate;
+  }
+
   return (
     <>
-      {trainingData.map((entry) => {
+      {bookings.map((entry) => {
         return (
-          <StyledArena key={entry.id} className="entry">
+          <StyledArena key={entry._id} className="entry">
             <h3>{entry.title}</h3>
             <h4>{entry.bookedArena}</h4>
             <p>{entry.bookedPerson}</p>
-            <p className="entry_time">{entry.time}</p>
-            <p className="entry_date">{entry.date}</p>
+            <p className="entry_time">
+              {entry.sTime}-{entry.eTime}
+            </p>
+            <p className="entry_date">{formatDate(entry.date)}</p>
           </StyledArena>
         );
       })}
     </>
   );
-}
+};
+
+export default BookedArenas;
 
 const StyledArena = styled.div`
   background-color: #a4b9a0;
