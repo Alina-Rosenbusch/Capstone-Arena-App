@@ -54,10 +54,10 @@ const BookedArenas = () => {
 
   return (
     <>
-      {bookings.map((entry) => {
-        return (
-          <StyledHomeArenaWrapper key={entry._id}>
-            <StyledArena>
+      <StyledHomeArenaWrapper>
+        {bookings.map((entry) => {
+          return (
+            <StyledArena key={entry._id}>
               <StyledBookedArenaTitle>{entry.title}</StyledBookedArenaTitle>
               <StyledBookedArena>{entry.bookedArena}</StyledBookedArena>
               <StyledBookedPerson>{entry.bookedPerson}</StyledBookedPerson>
@@ -72,9 +72,9 @@ const BookedArenas = () => {
                 <BsTrash3Fill />
               </StyledTrashButton>
             </StyledArena>
-          </StyledHomeArenaWrapper>
-        );
-      })}
+          );
+        })}
+      </StyledHomeArenaWrapper>
       {showConfirmation && (
         <ModalOverlay>
           <Modal>
