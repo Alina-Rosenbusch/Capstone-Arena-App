@@ -13,6 +13,7 @@ import {
   StyledHomeArenaWrapper,
   StyledBookedPerson,
   StyledTrashButton,
+  StyledDeleteButton,
 } from "./styles";
 
 const BookedArenas = () => {
@@ -82,6 +83,7 @@ const BookedArenas = () => {
             <StyledCancelButton onClick={() => setShowConfirmation(false)}>
               Cancel
             </StyledCancelButton>
+            <StyledDeleteButton>Delete</StyledDeleteButton>
           </Modal>
         </ModalOverlay>
       )}

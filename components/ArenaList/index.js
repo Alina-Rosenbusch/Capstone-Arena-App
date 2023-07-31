@@ -39,7 +39,7 @@ const StyledArenaListWrapper = styled.ul`
   padding: 0px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   gap: 1rem;
   padding-bottom: 70px;

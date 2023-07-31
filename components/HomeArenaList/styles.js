@@ -78,6 +78,7 @@ const Modal = styled.div`
   border-radius: 10px;
   padding: 20px;
   border: 1px solid #354531;
+  position: relative;
 `;
 
 const StyledCancelButton = styled.button`
@@ -85,6 +86,23 @@ const StyledCancelButton = styled.button`
   height: 40px;
   width: 40%;
   border: thin solid #354531;
+
+  &:hover {
+    box-shadow: 1px 1px 10px #354531;
+  }
+`;
+
+const StyledDeleteButton = styled.button`
+  background-color: #880000;
+  color: white;
+  border-radius: 10px;
+  border: thin solid #000000;
+  height: 40px;
+  width: 40%;
+  border: thin solid #880000;
+  position: absolute;
+  top: 70px;
+  right: 20px;
 
   &:hover {
     box-shadow: 1px 1px 10px #354531;
@@ -103,4 +121,5 @@ export {
   StyledHomeArenaWrapper,
   StyledBookedPerson,
   StyledTrashButton,
+  StyledDeleteButton,
 };
