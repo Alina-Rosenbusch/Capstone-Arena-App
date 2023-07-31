@@ -1,9 +1,31 @@
-
-import styled from "styled-components";
 import useSWR from "swr";
 import { useState } from "react";
+import { BsTrash3Fill } from "react-icons/bs";
+import {
+  StyledArena,
+  ModalOverlay,
+  Modal,
+  StyledCancelButton,
+  StyledArenaListItemTime,
+  StyledArenaListItemDate,
+  StyledBookedArena,
+  StyledBookedArenaTitle,
+  StyledHomeArenaWrapper,
+  StyledBookedPerson,
+  StyledTrashButton,
+} from "./styles";
 
 const BookedArenas = () => {
+  //Delete confirmation
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [selectedEntry, setSelectedEntry] = useState(null);
+
+  const handleOpenConfirmation = (entry) => {
+    setSelectedEntry(entry._id);
+    setShowConfirmation(true);
+  };
+
+  // Connection DB
   const { data: bookings, error } = useSWR("/api/bookings");
   const [isReady, setIsReady] = useState(false);
 
@@ -32,50 +54,39 @@ const BookedArenas = () => {
 
   return (
     <>
-      {bookings.map((entry) => {
-        return (
-          <StyledArena key={entry._id} className="entry">
-            <h3>{entry.title}</h3>
-            <h4>{entry.bookedArena}</h4>
-            <p>{entry.bookedPerson}</p>
-            <p className="entry_time">
-              {entry.sTime}-{entry.eTime}
-            </p>
-            <p className="entry_date">{formatDate(entry.date)}</p>
-          </StyledArena>
-        );
-      })}
+      <StyledHomeArenaWrapper>
+        {bookings.map((entry) => {
+          return (
+            <StyledArena key={entry._id}>
+              <StyledBookedArenaTitle>{entry.title}</StyledBookedArenaTitle>
+              <StyledBookedArena>{entry.bookedArena}</StyledBookedArena>
+              <StyledBookedPerson>{entry.bookedPerson}</StyledBookedPerson>
+              <StyledArenaListItemTime>
+                {entry.sTime}-{entry.eTime}
+              </StyledArenaListItemTime>
+              <StyledArenaListItemDate>
+                {formatDate(entry.date)}
+              </StyledArenaListItemDate>
+
+              <StyledTrashButton onClick={() => handleOpenConfirmation(entry)}>
+                <BsTrash3Fill />
+              </StyledTrashButton>
+            </StyledArena>
+          );
+        })}
+      </StyledHomeArenaWrapper>
+      {showConfirmation && (
+        <ModalOverlay>
+          <Modal>
+            <p>Are you sure you want to delete this booking?</p>
+            <StyledCancelButton onClick={() => setShowConfirmation(false)}>
+              Cancel
+            </StyledCancelButton>
+          </Modal>
+        </ModalOverlay>
+      )}
     </>
   );
 };
 
 export default BookedArenas;
-
-const StyledArena = styled.div`
-  background-color: #a4b9a0;
-  border-radius: 10px;
-  padding: 11px;
-  margin: 10px;
-  height: 160px;
-
-  .entry {
-    position: relative;
-  }
-
-  h4 {
-    position: absolute;
-    right: 25px;
-    margin-top: -40px;
-  }
-
-  .entry_time {
-    position: absolute;
-    right: 25px;
-  }
-
-  .entry_date {
-    position: absolute;
-    right: 25px;
-    margin-top: -15px;
-  }
-`;
