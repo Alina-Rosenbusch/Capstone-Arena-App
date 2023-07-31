@@ -2,7 +2,6 @@ import styled from "styled-components";
 import useSWR from "swr";
 import { useState } from "react";
 
-
 const ListArenas = () => {
   const { data: arenas, error } = useSWR("/api/arenas");
   const [isReady, setIsReady] = useState(false);
@@ -23,9 +22,11 @@ const ListArenas = () => {
     <>
       {arenas.map((arena) => {
         return (
-          <StyledArenaList key={arena._id} className="arenaListEntry">
-            <p className="arena">{arena.arenaName}</p>
-          </StyledArenaList>
+          <StyledArenaListWrapper key={arena._id}>
+            <StyledArenaList>
+              <StyledArenaListName>{arena.arenaName}</StyledArenaListName>
+            </StyledArenaList>
+          </StyledArenaListWrapper>
         );
       })}
     </>
@@ -34,11 +35,20 @@ const ListArenas = () => {
 
 export default ListArenas;
 
-const StyledArenaList = styled.div`
+const StyledArenaListWrapper = styled.ul`
+  padding: 0px;
+`;
+
+const StyledArenaList = styled.li`
   background-color: #a4b9a0;
   border-radius: 10px;
   padding: 20px;
   margin: 30px 70px;
   width: 180px;
   height: 180px;
+  list-style: none;
+`;
+
+const StyledArenaListName = styled.p`
+  font-weight: bold;
 `;

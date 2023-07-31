@@ -1,8 +1,19 @@
-import styled from "styled-components";
 import useSWR from "swr";
 import { useState } from "react";
 import { BsTrash3Fill } from "react-icons/bs";
-import {StyledArena, ModalOverlay, Modal, StyledCancelButton} from "./styles";
+import {
+  StyledArena,
+  ModalOverlay,
+  Modal,
+  StyledCancelButton,
+  StyledArenaListItemTime,
+  StyledArenaListItemDate,
+  StyledBookedArena,
+  StyledBookedArenaTitle,
+  StyledHomeArenaWrapper,
+  StyledBookedPerson,
+  StyledTrashButton,
+} from "./styles";
 
 const BookedArenas = () => {
   //Delete confirmation
@@ -45,16 +56,23 @@ const BookedArenas = () => {
     <>
       {bookings.map((entry) => {
         return (
-          <StyledArena key={entry._id} className="entry">
-            <h3>{entry.title}</h3>
-            <h4>{entry.bookedArena}</h4>
-            <p>{entry.bookedPerson}</p>
-            <p className="entry_time">
-              {entry.sTime}-{entry.eTime}
-            </p>
-            <p className="entry_date">{formatDate(entry.date)}</p>
-            <BsTrash3Fill onClick={() => handleOpenConfirmation(entry)} />
-          </StyledArena>
+          <StyledHomeArenaWrapper key={entry._id}>
+            <StyledArena>
+              <StyledBookedArenaTitle>{entry.title}</StyledBookedArenaTitle>
+              <StyledBookedArena>{entry.bookedArena}</StyledBookedArena>
+              <StyledBookedPerson>{entry.bookedPerson}</StyledBookedPerson>
+              <StyledArenaListItemTime>
+                {entry.sTime}-{entry.eTime}
+              </StyledArenaListItemTime>
+              <StyledArenaListItemDate>
+                {formatDate(entry.date)}
+              </StyledArenaListItemDate>
+
+              <StyledTrashButton onClick={() => handleOpenConfirmation(entry)}>
+                <BsTrash3Fill />
+              </StyledTrashButton>
+            </StyledArena>
+          </StyledHomeArenaWrapper>
         );
       })}
       {showConfirmation && (
@@ -72,4 +90,3 @@ const BookedArenas = () => {
 };
 
 export default BookedArenas;
-

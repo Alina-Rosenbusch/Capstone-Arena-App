@@ -1,44 +1,63 @@
-import { BsEye } from "react-icons/bs";
 import styled from "styled-components";
 
-const StyledArena = styled.div`
+const StyledHomeArenaWrapper = styled.ul`
+  padding: 0;
+`;
+
+const StyledArena = styled.li`
   background-color: #a4b9a0;
   border-radius: 10px;
   padding: 11px;
   margin: 10px;
   height: 160px;
+  position: relative;
+  text-decoration: none;
+  list-style: none;
+`;
 
-  .entry {
-    position: relative;
-  }
+const StyledTrashButton = styled.button`
+  font-size: 25px;
+  color: #354531;
+  position: absolute;
+  right: 25px;
+  top: 100px;
+  border: none;
+  background-color: transparent;
 
-  h4 {
-    position: absolute;
-    right: 25px;
-    margin-top: -40px;
-  }
-
-  .entry_time {
-    position: absolute;
-    left: 20px;
-  }
-
-  .entry_date {
-    position: absolute;
-    left: 20px;
-    margin-top: -10px;
-  }
-
-  svg {
-    font-size: 25px;
-    color: #354531;
-    position: absolute;
-    right: 25px;
-  }
-
-  svg:hover {
+  &:hover {
     color: #880000;
   }
+`;
+
+const StyledBookedArenaTitle = styled.p`
+  font-weight: bold;
+  font-size: larger;
+  position: absolute;
+  left: 20px;
+`;
+
+const StyledBookedArena = styled.p`
+  position: absolute;
+  right: 25px;
+  font-weight: bold;
+`;
+
+const StyledBookedPerson = styled.p`
+  position: absolute;
+  left: 20px;
+  margin-top: 60px;
+`;
+
+const StyledArenaListItemDate = styled.p`
+  position: absolute;
+  left: 20px;
+  margin-top: 90px;
+`;
+
+const StyledArenaListItemTime = styled.p`
+  position: absolute;
+  left: 20px;
+  margin-top: 115px;
 `;
 
 const ModalOverlay = styled.div`
@@ -72,4 +91,16 @@ const StyledCancelButton = styled.button`
   }
 `;
 
-export {StyledArena, ModalOverlay, Modal, StyledCancelButton}
+export {
+  StyledArena,
+  ModalOverlay,
+  Modal,
+  StyledCancelButton,
+  StyledArenaListItemTime,
+  StyledArenaListItemDate,
+  StyledBookedArena,
+  StyledBookedArenaTitle,
+  StyledHomeArenaWrapper,
+  StyledBookedPerson,
+  StyledTrashButton,
+};
