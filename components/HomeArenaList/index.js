@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { useState } from "react";
 import { BsTrash3Fill } from "react-icons/bs";
 import {
@@ -55,7 +55,7 @@ const BookedArenas = () => {
     });
     if (response.ok) {
       await response.json();
-      router.push("/");
+      mutate("/api/bookings/");
     } else {
       console.error(response.status);
     }
