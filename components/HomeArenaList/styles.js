@@ -84,7 +84,7 @@ const Modal = styled.div`
 const StyledCancelButton = styled.button`
   border-radius: 10px;
   height: 40px;
-  width: 40%;
+  width: 150px;
   border: thin solid #354531;
 
   &:hover {
@@ -98,7 +98,7 @@ const StyledDeleteButton = styled.button`
   border-radius: 10px;
   border: thin solid #000000;
   height: 40px;
-  width: 40%;
+  width: 150px;
   border: thin solid #880000;
   position: absolute;
   top: 70px;
