@@ -4,6 +4,12 @@ import Booking from "../../../db/models/bookings";
 export default async function handler(request, response) {
   await dbConnect();
 
+  if (request.method !== "DELETE") {
+    response.setHeader("Allow", ["DELETE"]);
+    response.status(405).end(`Method ${request.method} Not Allowed`);
+    return;
+  }
+
   const { bookingID } = request.query;
 
   if (request.method === "GET") {
