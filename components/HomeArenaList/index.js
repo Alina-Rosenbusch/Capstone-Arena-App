@@ -14,6 +14,7 @@ import {
   StyledBookedPerson,
   StyledTrashButton,
   StyledDeleteButton,
+  StyledEmptyBookings,
 } from "./styles";
 import router from "next/router";
 
@@ -46,6 +47,14 @@ const BookedArenas = () => {
 
   if (!isReady) {
     setIsReady(true);
+  }
+
+  if (bookings.length === 0) {
+    return (
+      <StyledEmptyBookings>
+        No Bookings, go and plan your training 🐴🥳!
+      </StyledEmptyBookings>
+    );
   }
 
   //Delete Booking
