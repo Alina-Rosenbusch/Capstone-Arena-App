@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Training",
+    "bookedArena": "Dressage Arena",
+    "bookedPerson": "Ally",
+    "sTime": "13:00",
+    "eTime": "14:30",
+    "date": "20.July.2023",
+    "singleRider": false
+  },
+  {
+    "title": "Lesson with Angelo",
+    "bookedArena": "Dressage Arena",
+    "bookedPerson": "Jelena",
+    "sTime": "15:00",
+    "eTime": "16:00",
+    "date": "20.July.2023",
+    "singleRider": true
+  },
+  {
+    "title": "Training",
+    "bookedArena": "Jumping Arena",
+    "bookedPerson": "Milena",
+    "sTime": "17:00",
+    "eTime": "18:00",
+    "date": "21.July.2023",
+    "singleRider": false
+  },
+  {
+    "title": "Parelli Session Level 2 Training",
+    "bookedArena": "Round Pen",
+    "bookedPerson": "James",
+    "sTime": "12:00",
+    "eTime": "13:e0",
+    "date": "22.July.2023",
+    "singleRider": true
+  }
+]

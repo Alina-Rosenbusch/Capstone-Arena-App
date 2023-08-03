@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { useState } from "react";
 import { BsTrash3Fill } from "react-icons/bs";
 import {
@@ -14,6 +14,7 @@ import {
   StyledBookedPerson,
   StyledTrashButton,
   StyledDeleteButton,
+  StyledEmptyBookings,
 } from "./styles";
 import router from "next/router";
 
@@ -48,6 +49,14 @@ const BookedArenas = () => {
     setIsReady(true);
   }
 
+  if (bookings.length === 0) {
+    return (
+      <StyledEmptyBookings>
+        No Bookings, go and plan your training 🐴🥳!
+      </StyledEmptyBookings>
+    );
+  }
+
   //Delete Booking
   async function handleDeleteBooking() {
     const response = await fetch(`/api/bookings/${selectedEntry}`, {
@@ -55,7 +64,7 @@ const BookedArenas = () => {
     });
     if (response.ok) {
       await response.json();
-      router.push("/");
+      mutate("/api/bookings/");
     } else {
       console.error(response.status);
     }
