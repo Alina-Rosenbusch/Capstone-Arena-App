@@ -13,6 +13,7 @@ import {
 } from "./styles";
 import { FaArrowLeft } from "react-icons/fa";
 import Router from "next/router";
+import Navigation from "../Navigation";
 
 const ArenaBookingForm = () => {
   const [bookingData, setBookingData] = useState({
@@ -149,6 +150,7 @@ const ArenaBookingForm = () => {
           </BookArenaButton>
         </div>
       </form>
+      <Navigation />
     </>
   );
 };
