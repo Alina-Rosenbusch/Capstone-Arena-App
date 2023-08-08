@@ -110,10 +110,10 @@ const StyledDeleteButton = styled.button`
 `;
 
 const StyledEmptyBookings = styled.h2`
-display: flex;
-justify-content: center;
-align-items: center;
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export {
   StyledArena,
