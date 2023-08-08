@@ -45,9 +45,7 @@ const ArenaBookingForm = () => {
     try {
       const response = await fetch("/api/bookings/", {
         method: "POST",
-        headers: {
-          "Content-Typ": "application/json",
-        },
+
         body: JSON.stringify(bookingData),
       });
 
@@ -145,9 +143,7 @@ const ArenaBookingForm = () => {
           />
         </div>
         <div>
-          <BookArenaButton type="submit" onSubmit={handleSubmit}>
-            Book Arena
-          </BookArenaButton>
+          <BookArenaButton type="submit">Book Arena</BookArenaButton>
         </div>
       </form>
       <Navigation />
