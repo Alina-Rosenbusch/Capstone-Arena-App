@@ -22,7 +22,6 @@ const BookedArenas = () => {
   //Delete confirmation
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState(null);
-  console.log(selectedEntry);
 
   const handleOpenConfirmation = (e) => {
     setSelectedEntry(e._id);
