@@ -34,11 +34,13 @@ const StyledBookedArenaTitle = styled.p`
   font-size: larger;
   position: absolute;
   left: 20px;
+  top: 17px;
 `;
 
 const StyledBookedArena = styled.p`
   position: absolute;
   right: 25px;
+  top: 0px;
   font-weight: bold;
 `;
 
@@ -77,15 +79,21 @@ const Modal = styled.div`
   background: #a4b9a0;
   border-radius: 10px;
   padding: 20px;
+  padding-bottom: 70px;
   border: 1px solid #354531;
   position: relative;
 `;
 
 const StyledCancelButton = styled.button`
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
   height: 40px;
   width: 150px;
   border: thin solid #354531;
+  left: 20px;
 
   &:hover {
     box-shadow: 1px 1px 10px #354531;
@@ -110,10 +118,10 @@ const StyledDeleteButton = styled.button`
 `;
 
 const StyledEmptyBookings = styled.h2`
-display: flex;
-justify-content: center;
-align-items: center;
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export {
   StyledArena,
