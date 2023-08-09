@@ -10,6 +10,8 @@ import {
   StyledCheckbox,
   BookArenaButton,
   StyledBackButton,
+  ButtonContainer,
+  Form,
 } from "./styles";
 import { FaArrowLeft } from "react-icons/fa";
 import Router from "next/router";
@@ -66,7 +68,7 @@ const ArenaBookingForm = () => {
       <StyledBackButton href="/" alt="home">
         <FaArrowLeft />
       </StyledBackButton>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <div>
           <StyledTitle
             placeholder="Give your training a title"
@@ -142,10 +144,10 @@ const ArenaBookingForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <ButtonContainer>
           <BookArenaButton type="submit">Book Arena</BookArenaButton>
-        </div>
-      </form>
+        </ButtonContainer>
+      </Form>
       <Navigation />
     </>
   );
