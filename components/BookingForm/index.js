@@ -69,81 +69,65 @@ const ArenaBookingForm = () => {
         <FaArrowLeft />
       </StyledBackButton>
       <Form onSubmit={handleSubmit}>
-        <div>
-          <StyledTitle
-            placeholder="Give your training a title"
-            type="text"
-            id="title"
-            name="title"
-            value={bookingData.title}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <StyledBookedPerson
-            placeholder="Who is training?"
-            type="text"
-            id="bookedPerson"
-            name="bookedPerson"
-            value={bookingData.bookedPerson}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <StyledDate
-            type="date"
-            id="date"
-            name="date"
-            value={bookingData.date}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <StyledStartTime
-            type="time"
-            id="sTime"
-            name="sTime"
-            value={bookingData.sTime}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <StyledEndTime
-            type="time"
-            id="eTime"
-            name="eTime"
-            value={bookingData.eTime}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <StyledChooseArena
-            placeholder="Choose Arena"
-            id="bookedArena"
-            name="bookedArena"
-            value={bookingData.bookedArena}
-            onChange={handleChange}
-          >
-            <option value="">Choose Arena</option>
-            <option value="Dressage Arena">Dressage Arena</option>
-            <option value="Dressage Arena outside">
-              Dressage Arena outside
-            </option>
-            <option value="Jumping Arena">Jumping Arena</option>
-            <option value="Military Arena">Military Arena</option>
-            <option value="Round Pen">Round Pen</option>
-          </StyledChooseArena>
-        </div>
-        <div>
-          <StyledLabel htmlFor="singleRiderCheck">Single Rider</StyledLabel>
-          <StyledCheckbox
-            type="checkbox"
-            id="singleRider"
-            name="singleRider"
-            checked={bookingData.singleRider}
-            onChange={handleChange}
-          />
-        </div>
+        <StyledTitle
+          placeholder="Give your training a title"
+          type="text"
+          id="title"
+          name="title"
+          value={bookingData.title}
+          onChange={handleChange}
+        />
+        <StyledBookedPerson
+          placeholder="Who is training?"
+          type="text"
+          id="bookedPerson"
+          name="bookedPerson"
+          value={bookingData.bookedPerson}
+          onChange={handleChange}
+        />
+        <StyledDate
+          type="date"
+          id="date"
+          name="date"
+          value={bookingData.date}
+          onChange={handleChange}
+        />
+        <StyledStartTime
+          type="time"
+          id="sTime"
+          name="sTime"
+          value={bookingData.sTime}
+          onChange={handleChange}
+        />
+        <StyledEndTime
+          type="time"
+          id="eTime"
+          name="eTime"
+          value={bookingData.eTime}
+          onChange={handleChange}
+        />
+        <StyledChooseArena
+          placeholder="Choose Arena"
+          id="bookedArena"
+          name="bookedArena"
+          value={bookingData.bookedArena}
+          onChange={handleChange}
+        >
+          <option value="">Choose Arena</option>
+          <option value="Dressage Arena">Dressage Arena</option>
+          <option value="Dressage Arena outside">Dressage Arena outside</option>
+          <option value="Jumping Arena">Jumping Arena</option>
+          <option value="Military Arena">Military Arena</option>
+          <option value="Round Pen">Round Pen</option>
+        </StyledChooseArena>
+        <StyledLabel htmlFor="singleRiderCheck">Single Rider</StyledLabel>
+        <StyledCheckbox
+          type="checkbox"
+          id="singleRider"
+          name="singleRider"
+          checked={bookingData.singleRider}
+          onChange={handleChange}
+        />
         <ButtonContainer>
           <BookArenaButton type="submit">Book Arena</BookArenaButton>
         </ButtonContainer>

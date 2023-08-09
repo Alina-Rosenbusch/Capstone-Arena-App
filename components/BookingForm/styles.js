@@ -132,7 +132,7 @@ const StyledCheckbox = styled.input`
   position: absolute;
   top: 547px;
   background: #a4b9a0;
-  left: 35%;
+  left: 50%;
   width: 30px;
   height: 1.3rem;
   border: 2px solid #ccc;
@@ -141,13 +141,15 @@ const StyledCheckbox = styled.input`
 
 const ButtonContainer = styled.div`
   display: flex;
+  position: relative;
+  top: 350px;
   align-items: center;
   justify-content: center;
 `;
 
 const BookArenaButton = styled.button`
-  position: absolute;
-  bottom: -170px;
+  position: relative;
+  bottom: 90px;
   width: 287px;
   height: 54px;
   border: none;
@@ -166,7 +168,7 @@ const BookArenaButton = styled.button`
 `;
 
 const Form = styled.form`
-  margin-bottom: 500px;
+  margin-bottom: 10px;
 `;
 
 export {
@@ -181,5 +183,5 @@ export {
   BookArenaButton,
   StyledBackButton,
   ButtonContainer,
-  Form
+  Form,
 };
