@@ -70,6 +70,13 @@ const BookedArenas = () => {
     setShowConfirmation(false);
   }
 
+  // Sorting the bookings
+  const sortedBookings = [...bookings].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateA - dateB;
+  });
+
   //format to german date:
   function formatDate(bookingDate) {
     const dateObject = new Date(bookingDate);
@@ -84,7 +91,7 @@ const BookedArenas = () => {
   return (
     <>
       <StyledHomeArenaWrapper>
-        {bookings.map((entry) => {
+        {sortedBookings.map((entry) => {
           return (
             <StyledArena key={entry._id}>
               <StyledBookedArenaTitle>{entry.title}</StyledBookedArenaTitle>
