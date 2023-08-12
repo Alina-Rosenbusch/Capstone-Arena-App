@@ -1,5 +1,5 @@
 import useSWR, { mutate } from "swr";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BsTrash3Fill } from "react-icons/bs";
 import {
   StyledArena,
@@ -28,10 +28,70 @@ const BookedArenas = () => {
     setShowConfirmation(true);
   };
 
+  console.log(selectedEntry);
+
   // Connection DB
   const { data: bookings, error, isLoading } = useSWR("/api/bookings/");
   const [isReady, setIsReady] = useState(false);
 
+  // Delete past bookings
+  async function deletePastBookings(items) {
+    const currentDate = new Date();
+    items.forEach(async (entry) => {
+      const entryDate = new Date(entry.date);
+      console.log("Entry:", entry);
+      console.log("Entry Date:", entryDate);
+      if (entryDate < currentDate) {
+        console.log("Deleting entry:", entry._id);
+        await handleDeleteRandom(entry._id);
+      }
+    });
+  }
+
+  async function handleDeleteRandom(item) {
+    const response = await fetch(`/api/bookings/${item}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      await response.json();
+      mutate("/api/bookings/");
+    } else {
+      console.error(response.status);
+    }
+  }
+  console.log(new Date());
+
+  useEffect(() => {
+    const targetHour = 1;
+    const targetMinute = 11;
+    const calculateTimeUntilTarget = () => {
+      const now = new Date();
+      const targetTime = new Date(now);
+      targetTime.setHours(targetHour);
+      targetTime.setMinutes(targetMinute);
+      targetTime.setSeconds(0);
+      if (now > targetTime) {
+        // Wenn die gewünschte Zeit heute bereits vergangen ist, setze es auf morgen
+        targetTime.setDate(targetTime.getDate() + 1);
+      }
+      return targetTime.getTime() - now.getTime();
+    };
+    const timeoutId = setTimeout(() => {
+      deletePastBookings(bookings); // Führe die Funktion aus
+      const timeUntilNextExecution = calculateTimeUntilTarget();
+      setTimeout(checkAndExecute, timeUntilNextExecution);
+    }, calculateTimeUntilTarget());
+    const checkAndExecute = () => {
+      deletePastBookings(bookings); // Führe die Funktion aus
+      const timeUntilNextExecution = calculateTimeUntilTarget();
+      setTimeout(checkAndExecute, timeUntilNextExecution);
+    };
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  //showing list
   if (!bookings && !error) {
     return <h2>Loading...</h2>;
   }
