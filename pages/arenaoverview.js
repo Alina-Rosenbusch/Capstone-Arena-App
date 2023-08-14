@@ -5,21 +5,10 @@ import Navigation from "../components/Navigation";
 
 export default function ArenaList() {
   return (
-    <>
+    <main>
       <Heading>Arena Overview</Heading>
-      <GridWrapper>
-        <ListArenas />
-      </GridWrapper>
+      <ListArenas />
       <Navigation />
-    </>
+    </main>
   );
 }
-
-const GridWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 1rem;
-  padding-bottom: 70px;
-`;

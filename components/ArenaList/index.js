@@ -36,13 +36,13 @@ const ListArenas = () => {
 export default ListArenas;
 
 const StyledArenaListWrapper = styled.ul`
-  padding: 0px;
+  padding: 0 0 70px 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 800px;
-  margin: 0 auto;
+  position: relative;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  max-width: 375px;
+  margin: 0 0 0 -45px;
   gap: 1rem;
-  padding-bottom: 70px;
 `;
 
 const StyledArenaList = styled.li`
@@ -50,11 +50,12 @@ const StyledArenaList = styled.li`
   border-radius: 10px;
   padding: 20px;
   margin: 30px 70px;
-  width: 180px;
-  height: 180px;
+  width: 130px;
+  height: 130px;
   list-style: none;
 `;
 
 const StyledArenaListName = styled.p`
+  font-size: medium;
   font-weight: bold;
 `;
