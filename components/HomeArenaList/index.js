@@ -62,7 +62,7 @@ const BookedArenas = () => {
   console.log(new Date());
 
   useEffect(() => {
-    const targetHour = 1;
+    const targetHour = 0o1;
     const targetMinute = 11;
     const calculateTimeUntilTarget = () => {
       const now = new Date();
